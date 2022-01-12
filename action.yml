@@ -12,6 +12,8 @@ inputs:
     default: "story.js"
     description: "the name of out js file"
     required: false
+  github_token:
+    description: "secrets.GITHUB_TOKEN"
     
 branding:
   color: 'blue'
@@ -44,4 +46,4 @@ runs:
     - name: GitHub Push
       uses: ad-m/github-push-action@v0.6.0
       with:
-        github_token: "${{ secrets.GITHUB_TOKEN }}"
+        github_token: "${{ inputs.github_token }}"
