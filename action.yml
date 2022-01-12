@@ -44,14 +44,14 @@ jobs:
           unzip inklecate_linux.zip
       - name: compile
         run: |
-          ./inklecate -o tmp.js ${{ github.event.inputs.input_file }}
-          echo "var storyContent = " > ${{  github.event.inputs.out_file }}
+          ./inklecate -o tmp.js "${{ github.event.inputs.input_file }}"
+          echo "var storyContent = " > "${{  github.event.inputs.out_file }}"
           cat tmp.js >> ${{  inputs.out_file }}
       - name: git
         run: |
           git config --local user.email "bot@github.com"
           git config --local user.name "ink bot"
-          git add 鲲酱的故事.js
+          git add "${{  github.event.inputs.out_file }}"
           git commit -m 'build js'
           
       - name: GitHub Push
