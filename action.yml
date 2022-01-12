@@ -27,6 +27,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 runs:
+  using: "composite"
+  steps:
     - name: get ink
       run: |
         wget https://github.com.cnpmjs.org/inkle/ink/releases/download/v1.0.0/inklecate_linux.zip
