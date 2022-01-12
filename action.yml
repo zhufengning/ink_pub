@@ -2,6 +2,7 @@
 
 name: "ink pub"
 description: "auto compile in file to js file when push"
+icon: book-open
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
