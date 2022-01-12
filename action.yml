@@ -26,7 +26,7 @@ on:
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
+runs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
@@ -40,9 +40,9 @@ jobs:
           wget https://github.com.cnpmjs.org/inkle/ink/releases/download/v1.0.0/inklecate_linux.zip
           unzip inklecate_linux.zip
       - name: compile
-        run: "./inklecate -o tmp.js ${{ github.event.inputs.input_file }};echo 'var storyContent = ' > ${{  github.event.inputs.out_file }};cat tmp.js >> ${{  inputs.out_file }};"
+        run: "./inklecate -o tmp.js ${{ github.event.inputs.input_file }};echo 'var storyContent = ' > ${{  inputs.out_file }};cat tmp.js >> ${{  inputs.out_file }};"
       - name: git
-        run: "git config --local user.email 'bot@github.com';git config --local user.name "ink bot";git add ${{  github.event.inputs.out_file }};git commit -m 'build js';"
+        run: "git config --local user.email 'bot@github.com';git config --local user.name "ink bot";git add ${{  inputs.out_file }};git commit -m 'build js';"
           
       - name: GitHub Push
         uses: ad-m/github-push-action@v0.6.0
