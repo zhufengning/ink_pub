@@ -33,10 +33,13 @@ runs:
       run: |
         wget https://github.com.cnpmjs.org/inkle/ink/releases/download/v1.0.0/inklecate_linux.zip
         unzip inklecate_linux.zip
+      shell: bash
     - name: compile
       run: "./inklecate -o tmp.js ${{ github.event.inputs.input_file }};echo 'var storyContent = ' > ${{  inputs.out_file }};cat tmp.js >> ${{  inputs.out_file }};"
+      shell: bash
     - name: git
       run: "git config --local user.email 'bot@github.com';git config --local user.name "ink bot";git add ${{  inputs.out_file }};git commit -m 'build js';"
+      shell: bash
 
     - name: GitHub Push
       uses: ad-m/github-push-action@v0.6.0
